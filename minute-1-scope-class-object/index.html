@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS Class and Object</title>
+        
+        <script src="car.js"></script>
+        
+        <script>
+            function init(){
+                var car = new Car("DeLorean", "DMC-12", "Metal");
+                car.startEngine();
+                car.setSpeed(88);
+                console.log(car.getSpeed());
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        
+    </body>
+</html>
