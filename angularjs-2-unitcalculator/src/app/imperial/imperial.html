@@ -4,8 +4,31 @@
     <acme-navbar></acme-navbar>
   </div>
 
-  <div class="well">
+  <div class="container">
     <h1>{{imperial.name}}</h1>
+
+    <div class="well well-sm">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="exampleInputName2">Name</label>
+          <input type="text" class="form-control" id="inputValue" ng-model="imperial.inputValue" placeholder="">
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Unit</th><th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Meters</td>
+            <td>{{imperial.milesToMeters(imperial.inputValue)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 
