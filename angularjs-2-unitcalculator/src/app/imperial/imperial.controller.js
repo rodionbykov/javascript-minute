@@ -3,26 +3,17 @@
 
   angular
     .module('unitcalculator')
-    .controller('ImperialController', ImperialController);
+    .controller('ImperialController', ['imperialConverter', ImperialController]);
 
   /** @ngInject */
-  function ImperialController() {
+  function ImperialController(imperialConverter) {
     var vm = this;
     vm.name = 'Imperial System';
     vm.inputValue = 0;
-    vm.milesToMeters = milesToMeters;
-  }
-
-  function inchesToMeters(inches){
-    return inches * 0.0254;
-  }
-
-  function feetToMeters(feet){
-    return feet * 0.3048;
-  }
-
-  function milesToMeters(miles){
-    return miles * 1609.344;
-  }
+    vm.inputUnit = 'miles';
+    vm.convert = function(toUnit){
+        return imperialConverter.convert(vm.inputValue, vm.inputUnit, toUnit);
+    };
+  }  
 
 })();

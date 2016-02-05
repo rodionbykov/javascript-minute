@@ -7,29 +7,72 @@
   <div class="container">
     <h1>{{imperial.name}}</h1>
 
-    <div class="well well-sm">
-      <form class="form-inline">
-        <div class="form-group">
-          <label for="exampleInputName2">Name</label>
-          <input type="text" class="form-control" id="inputValue" ng-model="imperial.inputValue" placeholder="">
-        </div>
-        <button type="submit" class="btn btn-primary">Calculate</button>
-      </form>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Unit</th><th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Meters</td>
-            <td>{{imperial.milesToMeters(imperial.inputValue)}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
-
+    <tabset>
+      <tab heading="Length">
+        <div class="well well-sm">
+          <div class="row">
+              <div class="col-md-6">
+                  <form class="form-inline">
+                    <div class="form-group">          
+                      <input type="text" class="form-control" id="inputValue" ng-model="imperial.inputValue" placeholder="">
+                    </div>        
+                    <div class="form-group">          
+                      <select id="inputUnit" class="form-control" ng-model="imperial.inputUnit">
+                        <option value="inches">Inches</option>
+                        <option value="feet">Feet</option>
+                        <option value="yards">Yards</option> 
+                        <option value="chains">Chains</option>
+                        <option value="furlongs">Furlongs</option>
+                        <option value="miles">Miles</option>
+                      </select>
+                    </div>        
+                  </form>
+                </div>
+                <div class="col-md-6"></div>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Unit</th><th>Value</th><th>Reference</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Inches</td>
+                        <td>{{imperial.convert('inches')}}</td>
+                        <td>1 mi = 63660 in.</td>
+                      </tr>
+                      <tr>
+                        <td>Feet</td>
+                        <td>{{imperial.convert('feet')}}</td>
+                      </tr>
+                    </tbody>
+                  </table>                                        
+                  </div>
+                  <div class="col-md-6">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Unit</th><th>Value</th><th>Reference</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Meters</td>
+                            <td>{{imperial.convert('meters')}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+             </div>
+          </div>                    
+      </tab>
+      <tab heading="Area"></tab>
+      <tab heading="Volume"></tab>
+      <tab heading="Weight"></tab>
+      <tab heading="Other"></tab>
+    </tabset>
+    
 </div>
