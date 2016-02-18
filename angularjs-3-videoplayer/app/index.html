@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>AngularJS Video Player</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angularjs3VideoplayerApp">
+  <body ng-app="angularjs3VideoplayerApp" ng-controller="MainCtrl as controller">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -34,15 +34,15 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">AnguarJS Video Player</a>
+            <a class="navbar-brand" href="#/">AngularJS Video Player</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="MainCtrl as controller">              
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">              
               <form class="navbar-form navbar-right" role="search">                
                 <div class="form-group">                     
                     <select name="videoID" id="videoID" class="form-control" 
-                            ng-options="option.label for option in controller.data.videos track by option.id"
-                            ng-model="controller.data.currentVideo">
+                            ng-options="option.label for option in controller.videos track by option.id"
+                            ng-model="controller.currentVideo">
                     </select>
                     <button class="btn btn-default" 
                             ng-click="controller.changeSource()">Watch</button>

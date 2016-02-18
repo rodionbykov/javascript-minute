@@ -1,39 +1,52 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name angularjs3VideoplayerApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the angularjs3VideoplayerApp
- */
 angular.module('angularjs3VideoplayerApp')
-  .controller('MainCtrl', ["$sce", "$scope", "videosources", function ($sce, $scope, videosources) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-      
-    this.data = {};
-    this.data.currentVideo = videosources.getCurrentVideo();
-    this.data.videos = videosources.getVideos();      
-          
-    this.getSources = function() {        
-        return [{src: $sce.trustAsResourceUrl( this.data.currentVideo.url ), type: "video/mp4"}];
-    }
+  .controller('MainCtrl', ["videosources", "$timeout", function (videosources, $timeout) {
     
-    this.changeSource = function () {
-        videosources.setCurrentVideo(this.data.currentVideo);        
-        this.config.sources = this.getSources();
-    }
+    var controller = this;
+        controller.state = null;
+        controller.API = null;
+          
+        controller.videos = videosources.getVideos();      
+        controller.sources = videosources.getSources();      
       
-    this.config = {
-            sources: this.getSources(),
+        controller.current = videosources.getCurrentVideoID();
+        controller.currentVideo = videosources.getCurrentVideo();
+      
+        controller.onPlayerReady = function(API) {
+            controller.API = API;
+        };
+
+        controller.onCompleteVideo = function() {
+            controller.isCompleted = true;
+
+            controller.current++;
+
+            if (controller.current >= controller.sources.length) controller.current = 0;
+
+            controller.setVideo();
+        };
+      
+        controller.setVideo = function(index) {
+            controller.API.stop();            
+            controller.config.sources = controller.sources[ index ];
+            $timeout(controller.API.play.bind(controller.API), 100);
+        };
+        
+        controller.changeSource = function () {
+            controller.current = controller.currentVideo.id;
+            videosources.setCurrentVideoID( controller.current );
+            
+            controller.setVideo(controller.current);
+        };
+              
+        controller.config = {
+            sources: controller.sources[ controller.current ],
             tracks: [],
             theme: "bower_components/videogular-themes-default/videogular.css",
             plugins: {},
             loop: false,
             preload: true
         };
+      
   }]);

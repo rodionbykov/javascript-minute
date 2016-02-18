@@ -1,6 +1,10 @@
 <div>
-	<div ng-controller="MainCtrl as controller" class="videogular-container">
-		<videogular vg-theme="controller.config.theme">
+	<div class="videogular-container">
+
+        <videogular vg-player-ready="controller.onPlayerReady($API)" 
+                    vg-complete="controller.onCompleteVideo()" 
+                    vg-theme="controller.config.theme">
+            
 			<vg-media vg-src="controller.config.sources"
                       vg-tracks="controller.config.tracks"
                       vg-loop="controller.config.loop"
@@ -24,6 +28,8 @@
 
 			<vg-overlay-play></vg-overlay-play>
 			<vg-poster vg-url='controller.config.plugins.poster'></vg-poster>
+            
 		</videogular>
-	</div>
+
+    </div>
 </div>

@@ -8,26 +8,41 @@
  * Service in the angularjs3VideoplayerApp.
  */
 angular.module('angularjs3VideoplayerApp')
-  .service('videosources', function () {
+       .service("videosources", ["$sce", function ($sce) {
     
-    var videos = [
-      {"id": 1, "label": "Video 1", "url": ""}
-    ];
-    
-    var currentVideo = videos[0];
+    var data = {
+        videos : [
+            { "id": 0, "label": "Video 1" },
+            { "id": 1, "label": "Video 2" },
+            { "id": 2, "label": "Video 3" }
+        ],        
+        sources : [
+            [{src: $sce.trustAsResourceUrl( "video1.mp4" ), type: "video/mp4"}],
+            [{src: $sce.trustAsResourceUrl( "video2.mp4" ), type: "video/mp4"}],            
+            [{src: $sce.trustAsResourceUrl( "video3.mp4" ), type: "video/mp4"}]            
+        ]
+    };
+           
+    var currentVideoID = 0;
 
     return {
-        getCurrentVideo: function () {
-            return currentVideo;
+        getVideos: function() {
+            return data.videos;
+        },   
+        getSources: function() {
+            return data.sources;
+        }, 
+        getCurrentVideo: function(){
+            return data.videos[currentVideoID];
         },
-        setCurrentVideo: function (value) {
-            currentVideo = value;
+        getCurrentSource: function(){
+            return data.sources[currentVideoID];
         },
-        getVideos: function () {
-            return videos;
+        getCurrentVideoID: function(){
+            return currentVideoID; 
         },
-        setVideos: function (value) {
-            videos = value;
+        setCurrentVideoID: function(value){
+            currentVideoID = value; 
         }
     };
-  });
+  }]);
