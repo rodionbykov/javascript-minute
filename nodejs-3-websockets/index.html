@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-US">
-    <head>    
+    <head>
         <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,24 +14,32 @@
         </style>
     </head>
     <body>
-        
+    <p id="status"></p>
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-    
+
     <script src="/socket.io/socket.io.js"></script>
     <script>
         var socket = io();
-        
-        $('form').submit(function(){
-          socket.emit('incoming_message', $('#m').val());
-          $('#messages').append($('<li>').text( $('#m').val() ));
-          $('#m').val('');            
+        var nickname = "";
+
+        socket.on("connect", function(data){
+            $("#status").html("Connected to server");
+            nickname = prompt("What is your nickname?");
+
+            socket.emit("join", nickname);
+        });
+
+        $("form").submit(function(){
+          socket.emit("incoming_message", $('#m').val());
+          $('#messages').append( $('<li>').text( nickname + ": " + $('#m').val() ) );
+          $('#m').val('');
           return false;
         });
-        // TODO add nickname support
-        socket.on('incoming_message', function(msg){
+
+        socket.on("incoming_message", function(msg){
             $('#messages').append($('<li>').text(msg));
         });
     </script>
