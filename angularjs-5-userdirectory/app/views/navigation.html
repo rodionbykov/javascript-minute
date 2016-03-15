@@ -1,0 +1,39 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation" bs-navbar>
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">User Directory</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="NavigationCtrl">
+
+        <ul class="nav navbar-nav">
+          <li ng-class="{active: getClass('/')}"><a href="#/">{{"views.menu.home" | translate}}</a></li>
+          <li ng-show="isPowerUser()" ng-class="{active: getClass('/user/create')}"><a ng-href="#/user/create">New User</a></li>
+          <li ng-show="isUser()" ng-class="{active: getClass('/user/list')}"><a ng-href="#/user/list">List Users</a></li>
+          <li ng-class="{active: getClass('/about')}"><a ng-href="#/about">{{"views.menu.about" | translate}}</a></li>
+        </ul>
+        <li>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-show="isUserLoggedIn()" class="nav navbar-text">{{getUserFullName()}} ({{getUserLevelName()}})</li>
+            <li ng-hide="isUserLoggedIn()" ng-class="{active: getClass('/login')}"><a ng-href="#/login">{{"views.menu.login" | translate}}</a></li>
+            <li ng-show="isUserLoggedIn()" ng-class="{active: getClass('/logout')}"><a ng-href="#/logout" ng-click="logout()">Log out</a></li>
+          </ul>
+        </li>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <span ng-translate-language-select></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
