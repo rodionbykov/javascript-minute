@@ -14,6 +14,6 @@
     vm.convert = function(toUnit){
         return imperialConverter.convert(vm.inputValue, vm.inputUnit, toUnit);
     };
-  }  
+  }
 
 })();
