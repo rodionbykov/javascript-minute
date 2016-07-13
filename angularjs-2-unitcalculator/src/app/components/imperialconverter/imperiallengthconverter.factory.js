@@ -9,6 +9,19 @@
   function ImperialLengthConverter() {
     var converter = {};
 
+    var inputUnits = [
+      {key:"inches", value:"Inches"},
+      {key:"feet", value:"Feet"},
+      {key:"yards", value:"Yards"},
+      {key:"chains", value:"Chains"},
+      {key:"furlongs", value:"Furlongs"},
+      {key:"miles", value:"Miles"}
+    ];
+
+    converter.getInputUnits = function(){
+      return inputUnits;
+    }
+
     converter.inches2inches = function(value){ return value * 1 }
     converter.inches2feet = function(value){ return value / 12 }
     converter.inches2yards = function(value){ return value / 36 }

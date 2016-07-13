@@ -6,9 +6,10 @@
 
   <div class="container">
     <h1>{{imperial.name}}</h1>
+    <p>{{imperial.inputKind}} {{imperial.inputUnit}}</p>
 
     <tabset>
-      <tab heading="Length">
+      <tab index="length" heading="Length" select="imperial.setKind('length')">
         <div class="well well-sm">
               <div class="row">
                   <div class="col-md-4">
@@ -22,13 +23,10 @@
                       <tr>
                         <td><input type="text" class="form-control form-control-sm text-right" id="inputValue" ng-model="imperial.inputValue" placeholder=""></td>
                         <td>
-                          <select id="inputUnit" class="form-control form-control-sm" ng-model="imperial.inputUnit">
-                            <option value="inches">Inches</option>
-                            <option value="feet">Feet</option>
-                            <option value="yards">Yards</option>
-                            <option value="chains">Chains</option>
-                            <option value="furlongs">Furlongs</option>
-                            <option value="miles">Miles</option>
+                          <select id="inputUnit"
+                                  class="form-control form-control-sm"
+                                  ng-model="imperial.inputUnit"
+                                  ng-options="unit as unit.value for unit in imperial.inputUnits track by unit.key">
                           </select>
                         </td>
                       </tr>
@@ -81,10 +79,83 @@
              </div>
           </div>
       </tab>
-      <tab heading="Area"></tab>
-      <tab heading="Volume"></tab>
-      <tab heading="Weight"></tab>
-      <tab heading="Other"></tab>
+      <tab index="area" heading="Area" select="imperial.setKind('area')">
+        <div class="well well-sm">
+          <div class="row">
+            <div class="col-md-4">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Value</th><th>Unit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><input type="text" class="form-control form-control-sm text-right" id="inputValue" ng-model="imperial.inputValue" placeholder=""></td>
+                  <td>
+                    <select id="inputUnit"
+                            class="form-control form-control-sm"
+                            ng-model="imperial.inputUnit"
+                            ng-options="unit as unit.value for unit in imperial.inputUnits track by unit.key">
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqinches') | number }}</td>
+                  <td>Square Inches</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqfeet') | number }}</td>
+                  <td>Square Feet</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqm') | number }}</td>
+                  <td>Square Meters</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqchains') | number }}</td>
+                  <td>Square Chains</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('acres') | number }}</td>
+                  <td>Acres</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('ha') | number }}</td>
+                  <td>Hectares</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqkm') | number }}</td>
+                  <td>Square Kilometers</td>
+                </tr>
+                <tr>
+                  <td class="text-right">{{imperial.convert('sqmiles') | number}}</td>
+                  <td>Square Miles</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-md-8">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>Reference</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </tab>
+      <tab index="volume" heading="Volume" select="imperial.setKind('volume')"></tab>
+      <tab index="weight" heading="Weight" select="imperial.setKind('weight')"></tab>
+      <tab index="other" heading="Other" select="imperial.setKind('other')"></tab>
     </tabset>
 
 </div>

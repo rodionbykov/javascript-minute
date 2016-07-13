@@ -9,11 +9,23 @@
   function ImperialController(ImperialConverter) {
     var vm = this;
     vm.name = 'Imperial System';
+    vm.inputKind = "length";
     vm.inputValue = 0;
-    vm.inputUnit = 'miles';
+    vm.inputUnit = {"key":"miles","value":"Miles"};
+    vm.inputUnits = ImperialConverter.getInputUnits(vm.inputKind);
+
     vm.convert = function(toUnit){
-        return ImperialConverter.convert(vm.inputValue, vm.inputUnit, toUnit);
+        return ImperialConverter.convert(vm.inputKind, vm.inputValue, vm.inputUnit.key, toUnit);
     };
+
+    vm.getKind = function(){
+      return vm.inputKind;
+    };
+
+    vm.setKind = function(inputKind){
+      vm.inputKind = inputKind;
+      vm.inputUnits = ImperialConverter.getInputUnits(vm.inputKind);
+    }
   }
 
 })();
