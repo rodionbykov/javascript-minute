@@ -1,4 +1,4 @@
 javascript-minute
 =================
 
-Learning materials on JS core, scopes, closures and frameworks
+Learning materials on JS core

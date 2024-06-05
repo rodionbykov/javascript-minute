@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Scope</title>
+</head>
+
+<body>
+  <script src="./global_scope.js"></script>
+
+  <p>In JavaScript, global scope is the widest scope available. Variables declared in global scope are accessible from anywhere in your code.</p>
+  <p>Whether it's inside functions, conditional statements, loops, or other blocks of code, global variables are always visible.</p>
+
+  <pre>
+    const global_constant = "this is global";
+
+    let global_variable = 42;
+
+    function global_function(){
+      console.log("I can see global variables");
+    
+      // everything declared outside function scope is visible inside a function
+      console.log(global_constant);
+      console.log(global_variable);
+    }
+  </pre>
+
+  <p>Remember that global scope provides broad accessibility, and can lead to unintended side effects and make your code harder to maintain. 
+    Whenever possible, prefer function or block scope to encapsulate variables within specific contexts.</p>
+</body>
+
+</html>

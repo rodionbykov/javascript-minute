@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Javascript Basics Minute 2 - Classes and Objects</title>
+    <script src="test.js"></script>
+  </head>
+  
+  <body>
+
+    <p>
+      All Javascript objects inherit properties and methods from a prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. 
+      The chain ends when we reach a prototype that has null for its own prototype.
+    </p>
+
+    <p>
+      When you try to access a property of an object, if the property can't be found in the object itself, the prototype is searched for the property. If the property still can't be found, then the prototype's prototype is searched, 
+      and so on until either the property is found, or the end of the chain is reached, in which case undefined is returned.
+    </p>
+
+    <p>
+      Here's an example of adding a method to the prototype of the Car constructor function:
+    </p>
+
+    <pre>
+      function Car(make, model, color) {
+        this.make = make;
+        this.model = model;
+        this.color = color;
+      }
+      
+      Car.prototype.getDescription = function() {
+        console.log(`This is a ${this.make} ${this.model} of color ${this.color}.`);
+      }
+      
+      const car1 = new Car("DeLorean", "DMC-12", "Metal");
+      
+      car1.getDescription();      
+    </pre>
+
+    <p>
+      In this example, we added a getDescription method to the prototype of the Car constructor function. Now, all objects created from the Car constructor will have access to this method.
+    </p>
+
+  </body>
+</html>

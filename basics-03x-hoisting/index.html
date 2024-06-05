@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoisting</title>
+</head>
+
+<body>
+  <script src="./hoisting.js"></script>
+
+  <h2>Hoisting</h2>
+  
+  <p>In JavaScript, hoisting is a behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase. 
+    This means that variables and functions can be used before they are declared in the code.</p>
+
+  <p>Here's a basic example to illustrate hoisting with a var variable:</p>
+
+  <pre>
+    console.log(b); // returns undefined
+    var b = 20;
+    console.log(b); // returns 20
+  </pre>
+
+  <p>In the example above, the JavaScript engine hoists the declaration var b; to the top of the scope, and initializes a variable with undefined.
+    So, the first console.log outputs undefined because b is declared but not yet assigned a new value.</p>
+
+  <p>For variables declared with let and const, hoisting behaves differently. While the declarations are still hoisted, they are not initialized with undefined, 
+    and trying to access them before the declaration will result in a ReferenceError. This is sometimes referred to as the "temporal dead zone."</p>
+
+  <pre>
+    console.log(d); // throws ReferenceError: can't access lexical declaration 'd' before initialization
+    let d = 40;
+  </pre>
+
+  <p>In this case, d is hoisted, but because it's declared with let, accessing it before the declaration results in an error.</p>
+
+  <p>To avoid confusion and potential errors, it's a good practice to declare all variables at the beginning of their scope.</p>
+
+</body>
+
+</html>
