@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listerners</title>
+  </head>
+
+  <body>
+    <h2>Event Listeners</h2>
+    
+    <p>Any Element can send (dispatch, emit) Event, that can be <em>listened to</em> by other Element. Upon receiving Event, Element can do some action.</p>
+
+    <p>To react upon receiving Event, an Element should have registered Event Listener function.</p>
+
+    <p>In this example, when button element is clicked, it dispatches 'click' event.</p>
+    
+    <p>In the same time, button listens to 'click' event, and has registered event handler, so when event is received, button reacts by calling <em>clickHandlerFuction</em>.</p>
+    
+    <p>
+      <pre>
+        const btn1 = document.querySelector("#btn1");
+
+        btn1.addEventListener('click', clickHandlerFuction);
+
+        function clickHandlerFuction() {
+            alert('It was clicked!');
+        }
+      </pre>
+    </p>
+
+    <p>
+      <button id="btn1">Click me!</button>
+    </p>
+    
+    <p>
+      See also:
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector">https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event">https://developer.mozilla.org/en-US/docs/Web/API/Event</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener</a></li>
+      </ul>
+    </p>
+
+    <script src="./eventlisteners.js"></script>
+  </body>
+
+</html>
