@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listerners (Cont.)</title>
+  </head>
+
+  <body>
+    <h2>Event Listeners (Cont.)</h2>
+
+    <p>Anonymous functions can be also used as event listeners.</p>
+  
+    <p>
+      <pre>
+        const btn1 = document.querySelector("#btn1");
+
+        btn1.addEventListener('click', function(){
+            alert('It was clicked!');
+        });
+      </pre>
+    </p>
+
+    <p>
+      <button id="btn1">Click me!</button>
+    </p>
+    
+    <p>Arrow functions can also be used as event listeners.</p>
+
+    <p>
+      <pre>
+        const btn2 = document.querySelector("#btn2");
+
+        btn2.addEventListener('click', () => alert('It was clicked too!'));
+      </pre>
+    </p>
+
+    <p>
+      <button id="btn2">Click me too!</button>
+    </p>
+
+    <script src="./eventlisteners-cont.js"></script>
+  </body>
+
+</html>

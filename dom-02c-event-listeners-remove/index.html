@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listerners Remove</title>
+  </head>
+
+  <body>
+    <h2>Event Listeners Remove</h2>
+
+    <p>Event Listener can be removed from Element (unbinding).</p>
+
+    <p>To remove Event Listener we need to know Event name and handler function name.</p>
+    
+    <p>This also means that anonymous event listener functions cannot be removed (unbound).</p>
+  
+    <p>
+      <pre>
+        const btn1 = document.querySelector("#btn1");
+
+        btn1.addEventListener('click', clickHandlerFuction);
+
+        function clickHandlerFuction() {
+          alert('It was clicked!');
+        }
+
+        const btn2 = document.querySelector("#btn2");
+
+        btn2.addEventListener('click', function(){
+          btn1.removeEventListener('click', clickHandlerFuction);
+        });
+
+        const btn3 = document.querySelector("#btn3");
+
+        btn3.addEventListener('click', function(){
+          btn1.addEventListener('click', clickHandlerFuction);
+        });
+      </pre>
+    </p>
+
+    <p>
+      <button id="btn1">I'm Button 1. Click me!</button>
+    </p>
+
+    <p>
+      <button id="btn2">Click me to unbind listener from Button 1</button>
+    </p>
+
+    <p>
+      <button id="btn3">Click me to bind listener to Button 1 again</button>
+    </p>
+
+    <script src="./eventlisteners-remove.js"></script>
+  </body>
+
+</html>
