@@ -4,11 +4,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Bubbling (Propagation)</title>
+    <title>Event Propagation aka Bubbling</title>
   </head>
 
   <body>
-    <h2>Event Bubbling (Propagation)</h2>
+    <h2>Event Propagation aka Bubbling</h2>
 
     <p>Event happened in Element can be listened to in Element's parents. Event <em>propagates</em> or <em>"bubbles"</em> up to parent Elements, for example to <code>div</code> surrounding a <code>button</code>.</p> 
       
@@ -34,12 +34,20 @@
       </pre>
     </p>
 
-    <div id="clickableDiv" style="width: 750px; height: 250px; border: 1px solid red;">
+    <p>In this example, clicking a <code>button</code> will trigger event twice - second time it will be <code>div</code> who intercepted event.</p>
+
+    <div id="clickableDiv" style="width: 750px; height: 20px; border: 1px solid red;">
       <p>Click inside this div or click a button.</p>
       <p>
         <button id="btn1">Click me!</button>
       </p>
     </div>
+
+    <p>See also:</p>
+    
+    <dd>
+      <dt><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Event_bubbling">Event bubbling</a></dt>
+    </dd>
 
     <script src="./event-bubbling.js"></script>
   </body>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Event Bubbling</title>
+  </head>
+
+  <body>
+    <h2>Stop Event Bubbling</h2>
+
+    <p>If we need to stop Event from bubbling up to parent element, Event's method <code>stopPropagation</code> is used.</p>
+
+    <p>Unlike previous example, in this code <code>div</code> not going to react to <code>click</code> event, because event not going to propagate from originating <code>button</code>.</p>
+      
+    <p>
+      <pre>
+        const btn1 = document.querySelector("#btn1");
+        const clickableDiv = document.querySelector("#clickableDiv");
+        
+        btn1.addEventListener('click', clickHandlerFuction);
+        clickableDiv.addEventListener('click', clickHandlerFuction);
+        
+        function clickHandlerFuction(event) {
+            alert('Mouse clicked!');
+            console.log("Click Event happened in", event.target.nodeName);
+            console.log("Currently we are listening to Click Event in", event.currentTarget.nodeName);
+            event.stopPropagation();
+        }
+      </pre>
+    </p>
+
+    <div id="clickableDiv" style="width: 750px; height: 200px; border: 1px solid red;">
+      <p>Click inside this div or click a button.</p>
+      <p>
+        <button id="btn1">Click me!</button>
+      </p>
+    </div>
+
+    <p>Some elements has pre-defined event listeners, for example clicking a <code>link</code> element will trigger browser location to change.</p>
+
+    <p><a id="clickableLink" href="https://google.com">Click me for search!</a></p>
+
+    <p>By using Event's method <code>preventDefault</code> we can stop element to use default behaviour. It can be useful for form validation or security.</p>
+
+    <p>
+      <pre>
+        const clickableLink = document.querySelector("#clickableLink");
+
+        clickableLink.addEventListener('click', clickButNoGo);
+        
+        function clickButNoGo(event) {
+            alert('Mouse clicked on the link!');
+            event.preventDefault();
+        }
+      </pre>
+    </p>
+
+    <p>See also:</p>
+
+    <dd>
+      <dt><a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation">Event: stopPropagation() method</a></dt>
+    </dd>
+
+    <script src="./event-bubbling-stop.js"></script>
+  </body>
+
+</html>
